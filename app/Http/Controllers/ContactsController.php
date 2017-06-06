@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Contact;
 use App\Http\Requests\CreateContactRequest;
 use App\Http\Requests\UpdateContactRequest;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
 
 class ContactsController extends Controller
 {
@@ -18,9 +16,7 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::orderBy('last_name')->get();
-        return $contacts;
-       // return view('contacts.index', compact('contacts'));
+        return Contact::orderBy('last_name')->get();
     }
 
     /**
@@ -112,11 +108,11 @@ class ContactsController extends Controller
      */
     public function destroy($id)
     {
-        $contact = Contact::find($id);
+        $contact = Contact::findOrFail($id);
         if ($contact) {
             $contact->delete();
             return response()->json([], 200);
         }
-
+        return response(null, Response::HTTP_CREATED);
     }
 }
