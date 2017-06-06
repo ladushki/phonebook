@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button id="new" @click="addContact()">+ Add new contact</button>
+        <button id="new" @click="addContact()"  v-if="!showForm">+ Add new contact</button>
         <cform v-if="showForm"
                :contact="contact"
                :userId="user"
@@ -42,6 +42,7 @@
                     last_name: '',
                     phone: '',
                     created_by: this.user,
+                    updated_by: this.user,
                 }
             }
         },
@@ -75,6 +76,7 @@
                     last_name: '',
                     phone: '',
                     created_by: this.user,
+                    updated_by: this.user,
                 }
             },
             updateContact (contact){

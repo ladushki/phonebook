@@ -18,9 +18,9 @@ class CreateContactsTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('phone')->nullable();
-            $table->integer('created_by')->unsigned()->default(1);
+            $table->integer('created_by')->unsigned();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('updated_by')->unsigned()->default(1);
+            $table->integer('updated_by')->unsigned()->nullable();
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

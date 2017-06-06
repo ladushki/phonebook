@@ -93,7 +93,8 @@ class ContactsController extends Controller
         $contact->first_name =  $request->first_name;
         $contact->last_name = $request->last_name;
         $contact->phone = $request->phone;
-        $contact->updated_by =  $request->created_by;
+        $contact->updated_by =  $request->updated_by;
+
         $contact->save();
 
         return response(null, Response::HTTP_CREATED);

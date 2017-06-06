@@ -1778,7 +1778,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 first_name: '',
                 last_name: '',
                 phone: '',
-                created_by: this.user
+                created_by: this.user,
+                updated_by: this.user
             }
         };
     },
@@ -1810,7 +1811,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 first_name: '',
                 last_name: '',
                 phone: '',
-                created_by: this.user
+                created_by: this.user,
+                updated_by: this.user
             };
         },
         updateContact: function updateContact(contact) {
@@ -1983,6 +1985,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2014,6 +2019,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var formData = new FormData();
             formData.set('_method', 'PUT');
             formData.set('created_by', this.contact.created_by);
+            formData.set('updated_by', this.contact.updated_by);
             formData.set('first_name', this.contact.first_name);
             formData.set('last_name', this.contact.last_name);
             formData.set('phone', this.contact.phone);
@@ -33794,7 +33800,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('button', {
+  return _c('div', [(!_vm.showForm) ? _c('button', {
     attrs: {
       "id": "new"
     },
@@ -33803,7 +33809,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.addContact()
       }
     }
-  }, [_vm._v("+ Add new contact")]), _vm._v(" "), (_vm.showForm) ? _c('cform', {
+  }, [_vm._v("+ Add new contact")]) : _vm._e(), _vm._v(" "), (_vm.showForm) ? _c('cform', {
     attrs: {
       "contact": _vm.contact,
       "userId": _vm.user,
@@ -34004,6 +34010,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "input": function($event) {
         if ($event.target.composing) { return; }
         _vm.contact.created_by = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.userId),
+      expression: "userId"
+    }],
+    attrs: {
+      "type": "hidden",
+      "id": "updated_by"
+    },
+    domProps: {
+      "value": (_vm.userId)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.userId = $event.target.value
       }
     }
   }), _vm._v(" "), _c('input', {

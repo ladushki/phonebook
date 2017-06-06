@@ -61,6 +61,9 @@
                             v-model="contact.created_by"
                             type="hidden" id="created_by">
                     <input
+                            v-model="userId"
+                            type="hidden" id="updated_by">
+                    <input
                             v-model="contact.id"
                             type="hidden" id="id">
                 </div>
@@ -113,6 +116,7 @@
                 let formData = new FormData();
                 formData.set('_method', 'PUT');
                 formData.set('created_by',  this.contact.created_by);
+                formData.set('updated_by',  this.contact.updated_by);
                 formData.set('first_name', this.contact.first_name);
                 formData.set('last_name', this.contact.last_name);
                 formData.set('phone', this.contact.phone);
