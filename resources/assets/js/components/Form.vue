@@ -107,7 +107,7 @@
         },
         data() {
             return {
-                errors: {}
+
             }
         },
 
